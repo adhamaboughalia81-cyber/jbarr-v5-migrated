@@ -942,7 +942,7 @@ img.portfolio-case-study--employer-logo {
     width: 100%;
     height: auto;
     border-bottom: var(--border-x-small) solid var(--color-text-muted);
-    padding: 16px 20px;
+    padding: 16px var(--margin-small);
   }
 
   .portfolio-content {
