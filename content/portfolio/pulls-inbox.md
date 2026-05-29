@@ -18,7 +18,7 @@ As agentic coding accelerated and larger teams adopted GitHub, its users were dr
 1. They wanted to know right away what they needed to review. Unblocking their teammates is the #1 priority.
 1. They wanted to know what state their PRs were in and their next steps. Do they need to fix CI? Make changes? 
 
-Additionally, the original version of the dashboard didn't use our modern React UI framework nor our design system [Primer](https://primer.style).
+Additionally, the original version of the dashboard didn't use our modern React UI framework nor our design system.
 
 ![The original pulls view](/images/portfolio/pulls-inbox/old-version.png)
 *Original version of the PR dashboard*
