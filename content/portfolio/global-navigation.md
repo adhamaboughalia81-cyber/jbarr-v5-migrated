@@ -39,7 +39,7 @@ As the GitHub platform grew to support over 150 million developers, including en
 The underlying IA needed to be made explicit. GitHub's hierarchy is deep: Enterprise -> Organization -> Repos, and each layer has its own set of features.
 
 ![GitHub's information architecture](/images/portfolio/global-navigation/IA.png)
-*Navigating between these two points took at least five clicks*
+*See that arrow above? Navigating between these two points in the product took at least five clicks*
 
 The original navigation didn't expose this hierarchy, making it impossible to navigate vertically or horizontally in the information architecture. Introducing a breadcrumb and fast repository switching enabled users to quickly navigate within an organization. Additionally, highly trafficked features weren't present in the navigation at all, requiring multiple clicks to get to workflows.
 
