@@ -32,7 +32,7 @@ export default function PortfolioNav({ items }: { items: NavItem[] }) {
         <ul className="portfolio-nav--list">
           {items.map((item) => {
             const href = `/portfolio/${item.slug}`;
-            const isActive = pathname === href;
+            const isActive = pathname === href || pathname === `${href}/`;
             return (
               <li key={item.slug}>
                 <Link
