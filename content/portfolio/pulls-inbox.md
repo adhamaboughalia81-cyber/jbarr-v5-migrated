@@ -16,7 +16,7 @@ The original version of the global pull request dashboard faced critical usabili
 
 As agentic coding accelerated and larger teams adopted GitHub, its users were drowning in PRs. 20+ user interviews I conducted were loud and clear, users needed help to triage and take action on their PRs:
 1. They wanted to know right away what they needed to review. Unblocking their teammates is the #1 priority.
-1. They wanted to know what state their PRs were in and their next steps? Do they need to fix CI? Make changes? 
+1. They wanted to know what state their PRs were in and their next steps. Do they need to fix CI? Make changes? 
 
 Additionally, the original version of the dashboard didn't use our modern React UI framework nor our design system [Primer](https://primer.style).
 
@@ -34,7 +34,7 @@ Key design decisions explored:
 - Triage groupings (authored, review requested, mentioned)
 - Density and information hierarchy
 - Status signals at a glance (CI, review state, draft)
-- Empty state and onboarding to the new model
+- Enterprise and team use cases
 
 I prototyped the experience directly in our codebase to give engineers, as well as created Figma explorations below:
 
@@ -104,7 +104,7 @@ To move quickly, I directly contributed to the UI and underlying logic of the in
 *My contributions to the project*
 
 ![In the weeds with code](/images/portfolio/pulls-inbox/in-the-weeds.png)
-*I got in the code to ship or communicate refinements to the complicated inbox logic*
+*I got in the code to ship UI improvements or to communicate refinements to the complicated inbox logic*
 
 ---
 

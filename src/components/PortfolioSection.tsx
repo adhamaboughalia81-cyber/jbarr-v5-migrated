@@ -31,12 +31,14 @@ function PortfolioBlock({ block }: { block: PortfolioContentBlock }) {
             src={assetPath(m.src)}
             controls
             playsInline
+            preload="metadata"
             className="portfolio-section--video"
           />
         ) : (
           <img
             src={assetPath(m.src)}
             alt={m.caption ?? ""}
+            loading="lazy"
             className="portfolio-section--image"
           />
         )}

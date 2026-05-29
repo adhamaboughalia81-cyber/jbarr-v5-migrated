@@ -53,6 +53,9 @@ The redesign restructured navigation around the product's real information archi
 
 As the product grew, this two-layer model enabled us to support cross-enterprise features that mapped to our RBAC scheme. Users with corp-level permissions had global access to the top layer, while site-level admins had access to site-level features. 
 
+![Cosmo design system](/images/portfolio/sigsci-dashboard/sigsci-cosmo-design-system.png)
+*Design system included navigation states and primitives*
+
 ---
 
 ## Results

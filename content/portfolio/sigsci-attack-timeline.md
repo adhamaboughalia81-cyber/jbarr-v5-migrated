@@ -49,6 +49,6 @@ The timeline visualization required mapping every possible attack state and tran
 - Marketing team highlighted feature in every enterprise demo
 
 ![The finished events page with attack timeline](/images/portfolio/sigsci-attack-timeline/full-page/event-finished.png)
-*Final production version*
+*Final design in production*
 
 
