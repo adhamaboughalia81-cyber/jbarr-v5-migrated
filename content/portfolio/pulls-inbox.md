@@ -5,7 +5,7 @@ employer: "GitHub"
 order: 1
 ---
 
-**tl;dr:** Redesigned and led the implementation of GitHub's global PR dashboard as an inbox-style triage surface, shipped through a phased rollout with a daily feedback loop, and contributed directly to the codebase to move fast.
+tl;dr: Redesigned and led the implementation of GitHub's global PR dashboard as a customizable triage surface, shipped through a phased rollout with a daily feedback loop, and contributed directly to the codebase to move fast.
 
 ![New PR inbox](/images/portfolio/pulls-inbox/inbox-hero.png)
 *The new PR dashboard's inbox, which helps users triage their review requests and respond to feedback*
@@ -14,7 +14,7 @@ order: 1
 
 The original version of the global pull request dashboard faced critical usability and architectural problems.
 
-As agentic coding accelerated and larger teams adopted GitHub, its users were drowning in PRs. 20+ user interviews I conducted were loud and clear, users needed help to triage and take action on their PRs:
+As agentic coding accelerated and larger teams adopted GitHub, its users were drowning in PRs. 20+ user interviews I conducted were loud and clear: users needed help to triage and take action on their PRs:
 1. They wanted to know right away what they needed to review. Unblocking their teammates is the #1 priority.
 1. They wanted to know what state their PRs were in and their next steps. Do they need to fix CI? Make changes? 
 
