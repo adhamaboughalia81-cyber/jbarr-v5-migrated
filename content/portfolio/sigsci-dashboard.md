@@ -7,6 +7,9 @@ order: 4
 
 **tl;dr:** Redesigned the Signal Sciences dashboard into a composable system where enterprises could configure views to match their organizational structure, directly enabling enterprise sales.
 
+![The original Signal Sciences dashboard](/images/portfolio/sigsci-dashboard/signal-sciences-dashboard.png)
+*The dashboard*
+
 ## Problem: One dashboard didn't fit every enterprise
 
 As Signal Sciences scaled to hundreds of enterprise customers, a fundamental tension emerged: different enterprises organize what they monitor in fundamentally different ways.
@@ -14,9 +17,6 @@ As Signal Sciences scaled to hundreds of enterprise customers, a fundamental ten
 Some structured their monitoring by tech stack. Others by business unit. Some by geographic region or risk tier. The signals that mattered also varied by persona: IT admins, security engineers, and executive sponsors all cared about different data.
 
 The existing dashboard was a fixed, one-size-fits-all view. It couldn't adapt to how a given enterprise was structured, which meant every large customer eventually hit a wall: the product worked, but the dashboard didn't reflect how they thought about their environment. Customization requests piled up. Sales faced friction closing enterprise deals. Support tickets followed.
-
-![The original Signal Sciences dashboard](/images/portfolio/sigsci-dashboard/signal-sciences-dashboard.png)
-*The dashboard*
 
 ---
 

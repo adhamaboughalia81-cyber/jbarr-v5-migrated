@@ -7,6 +7,9 @@ order: 3
 
 **tl;dr:** Designed an industry-first attack timeline visualization that made the security event lifecycle legible, reducing support tickets by 12% and becoming a key sales differentiator.
 
+![The event timeline](/images/portfolio/sigsci-attack-timeline/full-page/event-hero.png)
+*Redesigned events page with summary and event timeline*
+
 ## Problem: Too much security noise
 
 Security teams couldn't quickly understand if they were under attack or what actions to take. The original events dashboard was nearly unusable — attack details were out of order, relationships between events were unclear, and it wasn't clear what the current status or next steps were.
@@ -32,13 +35,13 @@ Below is an early design mockup:
 The timeline visualization required mapping every possible attack state and transition. I created a comprehensive flowchart of all event states to handle edge cases — from initial detection through expiration, including mode changes, status updates, and manual actions.
 
 ![Timeline breakdown — full state flowchart](/images/portfolio/sigsci-attack-timeline/breakdown/timeline-breakdown.png)
-*Annotated examples I developed with my engineering counterpart*
+*Annotated examples I designed for my engineering counterpart*
 
 ![Timeline update: action taken](/images/portfolio/sigsci-attack-timeline/breakdown/timeline-update--action.png)
 
 ---
 
-## The final product
+## The results
 
 - Users reported increased time-to-resolution
 - Reduced customer support tickets by 12%

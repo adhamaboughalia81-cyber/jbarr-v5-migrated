@@ -5,7 +5,10 @@ employer: "GitHub"
 order: 1
 ---
 
-**tl;dr:** Redesigned GitHub's global PR dashboard as an inbox-style triage surface, shipped through a phased rollout with a daily feedback loop, and contributed directly to the codebase to move fast.
+**tl;dr:** Redesigned and led the implementation of GitHub's global PR dashboard as an inbox-style triage surface, shipped through a phased rollout with a daily feedback loop, and contributed directly to the codebase to move fast.
+
+![New PR inbox](/images/portfolio/pulls-inbox/inbox-hero.png)
+*The new PR dashboard's inbox, which helps users triage their review requests and respond to feedback*
 
 ## Problem: an outdated dashboard
 
