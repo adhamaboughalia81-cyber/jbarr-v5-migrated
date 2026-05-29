@@ -1,32 +1,39 @@
 ---
-title: "Global Pull Requests Dashboard"
+title: "Pull requests dashboard"
 slug: "pulls-inbox"
 employer: "GitHub"
 order: 1
 ---
 
-## The old view wasn't built for how developers actually work
+**tl;dr:** Redesigned GitHub's global PR dashboard as an inbox-style triage surface, shipped through a phased rollout with a daily feedback loop, and contributed directly to the codebase to move fast.
 
-The original global pulls view was a flat, undifferentiated list. It had no triage model, no inbox concept, and no way to understand what actually needed attention. As developers scaled across more repos and orgs — and as agentic coding drove up PR volume — the surface broke down.
+## Problem: an outdated dashboard
 
-- No signal hierarchy — all PRs treated equally regardless of urgency or role
-- Fragmented across repos with no unified view
-- Table-stakes gaps compared to third-party tools like Graphite and Linear
-- High cognitive load with no relief mechanisms
+The original version of the global pull request dashboard faced critical usability and architectural problems.
+
+As agentic coding accelerated and larger teams adopted GitHub, its users were drowning in PRs. 20+ user interviews I conducted were loud and clear, users needed help to triage and take action on their PRs:
+1. They wanted to know right away what they needed to review. Unblocking their teammates is the #1 priority.
+1. They wanted to know what state their PRs were in and their next steps? Do they need to fix CI? Make changes? 
+
+Additionally, the original version of the dashboard didn't use our modern React UI framework nor our design system [Primer](https://primer.style).
 
 ![The original pulls view](/images/portfolio/pulls-inbox/old-version.png)
+*Original version of the PR dashboard*
 
 ---
 
-## Exploring the inbox model in Primer
+## Exploring the inbox model
 
-Explorations centered on reframing the pulls view as a developer inbox — a surface that tells you what needs your attention, not just what exists. All work done in Figma using the Primer Design System to ensure implementation fidelity.
+Explorations centered on reframing the PR dashboard as a developer inbox — a surface that tells you what needs your attention, not just what exists.
 
 Key design decisions explored:
+- How the PR dashboard fits into a broader, multi-artifact dashboard system
 - Triage groupings (authored, review requested, mentioned)
 - Density and information hierarchy
 - Status signals at a glance (CI, review state, draft)
 - Empty state and onboarding to the new model
+
+I prototyped the experience directly in our codebase to give engineers, as well as created Figma explorations below:
 
 ![Figma exploration: assigned view](/images/portfolio/pulls-inbox/assigned.png)
 
@@ -40,36 +47,39 @@ Key design decisions explored:
 
 The dashboard shipped in three gates, each designed to surface a different category of risk.
 
-**Staff ship** — Internal dogfooding with GitHub employees. Goal: catch fundamental UX and data correctness issues before external exposure.
+**Staff ship:** Internal dogfooding with GitHub employees. **Goal:** catch fundamental UX and data correctness issues before external exposure.
 
-**Private preview — high-value customers** — Targeted rollout to a curated set of power users and enterprise accounts. Goal: validate triage model against real, diverse workflow patterns. Gathered structured and unstructured feedback.
+**Private preview with high-value customers:** Targeted rollout to a curated set of power users and enterprise accounts. **Goal:** validate triage model against real, diverse workflow patterns.
 
-**Public preview** — Broad availability with explicit "preview" framing. Goal: scale feedback collection and measure adoption against the legacy view.
+**Public preview:** Made available to the public as an "opt-in" preview, then transition to on-by-default. **Goal:** scale feedback collection and validate general availability.
 
 ![Iteration on the dashboard](/images/portfolio/pulls-inbox/pr-dashboard-image.png)
+*An early iteration of the dashboard*
 
 ---
 
-## A daily closed-loop feedback system
+## A daily feedback system
 
-Most PM feedback cycles are slow. This one was designed to be fast by default.
+We moved quickly and aggressively to get the dashboard to market. We used a tight feedback and iteration loop to support this.
 
-**The system:**
+**How it worked:**
 1. Deployed a Kusto dashboard wired to in-product feedback signals
 2. Used Copilot CLI to synthesize feedback data daily — surfacing themes, regressions, and sentiment shifts without manual triage
 3. Each morning: read synthesis, identify the highest-signal items, ship a response, observe how it landed the next day
 
 This created a 24-hour loop between signal and change. At scale, it meant the product was measurably improving every single day during the preview period.
 
-![Feedback dashboard](/images/portfolio/pulls-inbox/feedback-dashboard.png)
-
 ![Feedback gathering process](/images/portfolio/pulls-inbox/feedback-gathering.png)
+*Capturing feedback in the UI*
+
+![Feedback dashboard](/images/portfolio/pulls-inbox/feedback-dashboard.png)
+*High-level view of all the feedback collected*
 
 ![Copilot CLI skill for feedback synthesis](/images/portfolio/pulls-inbox/cli-skill.png)
+*Copilot CLI skill to digest and synthesize the feedback*
 
 ![Synthesized feedback themes](/images/portfolio/pulls-inbox/feedback-themes.png)
-
-![User quotes](/images/portfolio/pulls-inbox/quotes.png)
+*Feedback overview*
 
 ---
 
@@ -77,42 +87,32 @@ This created a 24-hour loop between signal and change. At scale, it meant the pr
 
 Every incoming signal was triaged against a deliberate three-tier stack:
 
-1. **Bugs** — anything that broke trust or caused data loss. Shipped immediately.
-2. **Table stakes / parity** — gaps that gave users a reason to revert to the old view. Addressed these aggressively to remove adoption friction.
-3. **Fine-grained inbox improvements** — enhancements to the new model that only mattered once users had committed to it.
-
-The logic: you can't iterate on delight until you've removed the reasons to leave. Parity work wasn't defensive — it was adoption strategy.
+1. **Bugs:** Anything that broke trust or caused data loss. Shipped immediately.
+2. **Table stakes and parity:** Gaps that gave users a reason to revert to the old view. Addressed these aggressively to remove adoption friction.
+3. **Fine-grained inbox improvements:** Enhancements to the new model that only mattered once users had committed to it.
 
 ---
 
-## Signal → prototype → ship → next day
+## From design to ship
 
-The feedback loop was fast because the prototyping loop was fast too. AI-assisted prototyping was a core part of how ideas moved from signal to shippable change.
-
-Rather than waiting on design-engineering cycles to explore an idea, changes were prototyped directly using AI — generating quick implementations of UI variants, interaction states, or layout alternatives that could be evaluated in the actual product context, not just in Figma. This compressed the gap between "we should try this" and "here's what it actually feels like."
-
-**The full loop:**
-1. Kusto + Copilot CLI surfaces a theme from feedback
-2. AI prototype generated to explore the fix
-3. Prototype evaluated, refined, and shipped
-4. Signal observed the next day
-
----
-
-## From design to ship — no handoff
-
-Several key UI details were implemented directly as code contributions, not handed off to engineering. This closed the gap between design intent and production reality — especially for interaction states, edge cases, and density tuning that are hard to fully specify in Figma.
-
-This matters because: at GitHub's scale, the difference between a designed spec and production implementation is measured in tens of millions of impressions. Direct code contribution is how you own that gap.
+To move quickly, I directly contributed to the UI and underlying logic of the inbox. I made copy changes to components, layout adjustments, responsive tweaks, and refinements to the logic of the inbox directly in the codebase.
 
 ![Direct code contributions](/images/portfolio/pulls-inbox/contributions.png)
+*My contributions to the project*
 
 ![In the weeds with code](/images/portfolio/pulls-inbox/in-the-weeds.png)
+*I got in the code to ship or communicate refinements to the complicated inbox logic*
 
 ---
 
-## The result
+## Results
+
+A new PR inbox that captures the full PR lifecycle and helps users prioritize their work, and a customizable dashboard system with smart defaults.
 
 <video src="/images/portfolio/pulls-inbox/inbox.mp4"></video>
+*Changelog video I prepared of the Inbox*
 
 <video src="/images/portfolio/pulls-inbox/views.mp4"></video>
+*Changelog video of the dashboard interactions*
+
+![User quotes](/images/portfolio/pulls-inbox/quotes.png)

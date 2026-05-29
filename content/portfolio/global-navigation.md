@@ -1,59 +1,64 @@
 ---
-title: "Global Navigation Redesign"
+title: "GitHub navigation redesign"
 slug: "global-navigation"
 employer: "GitHub"
 order: 2
 ---
 
-## GitHub at scale — and why the nav broke down
+**tl;dr:** Led the ground-up redesign of GitHub's platform navigation for 150M+ developers, introducing a two-level system that exposed the information architecture and enabled the product to scale.
 
-GitHub is a code storage and collaboration platform used by over 150 million developers since 2008. It's technically deep and conceptually complex — Enterprise → Organization → Repo → feature area — and the original navigation didn't reflect any of that hierarchy.
+![GitHub at scale — 150M users](/images/portfolio/global-navigation/1-global-nav-hero.png)
+*The new global navigation, seen on a repo*
 
-Problems with the old nav:
+## Problem: the old navigation didn't scale
+
+As the GitHub platform grew to support over 150 million developers, including enterprises, its complexity increased significantly: features were added, the product was reorganized multiple times, and enterprise hierarchy evolved. The old navigation didn't reflect any of these changes.
+
+**Problems with the old nav:**
 - Didn't reflect GitHub's information architecture
 - Didn't surface product areas — key features were buried
 - Too many clicks to reach core workflows
 - Users resorted to the browser address bar to navigate
 - Got lost in hierarchy with no reliable orientation cues
 
-Platform-level problems compounding the UX issues:
+**Platform-level problems created UX issues:**
 - Couldn't scale for new features
 - Inconsistent, duplicate components across the product
-- Not accessible (a11y failures)
+- Not accessible
 - Not responsive for mobile devices
-- Didn't use the design system (Primer)
+- Didn't use the design system
 - Expensive to maintain
 
-![GitHub at scale — 150M users](/images/portfolio/global-navigation/1-global-nav-hero.png)
-
 ![The old navigation — problems with the existing approach](/images/portfolio/global-navigation/2-global-nav-before.png)
+*The old navigation, while familiar to users, was outdated and didn't do its job well*
 
 ---
 
-## First, map the hierarchy
+## Expose the information architecture
 
-Before touching the UI, the underlying IA needed to be made explicit. GitHub's hierarchy is deep: Enterprise sits above Organizations, which contain Repos, each of which has its own set of feature areas (Code, Issues, Pull Requests, Discussions, Actions, Projects, Security, Insights).
+The underlying IA needed to be made explicit. GitHub's hierarchy is deep: Enterprise -> Organization -> Repos, and each layer has its own set of features.
 
-The original navigation collapsed this structure into a flat, undifferentiated surface. The redesign started by exposing the hierarchy — vertical navigation for the platform scope, horizontal navigation for the repo scope — so users always know where they are and what's adjacent.
+![GitHub's information architecture](/images/portfolio/global-navigation/IA.png)
+*Navigating between these two points took at least five clicks*
 
----
-
-## A two-level system that reflects how GitHub is actually structured
-
-The new global navigation introduces a two-level system:
-
-**Global (top bar):** persistent access to cross-cutting navigation — search, notifications, create, account.
-
-**Local (left sidebar):** context-sensitive navigation reflecting the current scope (personal, org, or repo), surfacing the right feature areas with proper hierarchy.
-
-- Reflects information architecture end-to-end
-- Exposes vertical and horizontal navigation so users can orient instantly
-- Scalable — new features slot in without breaking the system
-- Consistent across the product using Primer components
-- Fully accessible (a11y compliant)
-- Responsive for mobile devices
+The original navigation didn't expose this hierarchy, making it impossible to navigate vertically or horizontally in the information architecture. Introducing a breadcrumb and fast repository switching enabled users to quickly navigate within an organization. Additionally, highly trafficked features weren't present in the navigation at all, requiring multiple clicks to get to workflows.
 
 ![Global navigation — repo-level view](/images/portfolio/global-navigation/3-github-global-navigation-closeup.png)
+*The breadcrumb and repo switcher in action*
+
+---
+
+## Restructured for scale
+
+The new navigation was designed with scale in mind, and I worked closely with partner feature teams to make sure the navigation was supported and implemented in their feature area. A two-level system included platform-level items globally at the top, and the lower level surfaced feature-specific items, which scaled as the feature grew.
+
+Structurally, we addressed platform-level problems with a complete rebuild.
+
+- Used the same components across the product
+- Fully accessible (a11y)
+- Responsive at any device size
+- More performant
+- Used design system
 
 ![Global navigation — expanded sidebar](/images/portfolio/global-navigation/4-github-global-navigation.png)
 

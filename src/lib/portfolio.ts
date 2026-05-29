@@ -8,10 +8,15 @@ export interface PortfolioMedia {
   caption?: string;
 }
 
+export interface PortfolioContentBlock {
+  kind: "text" | "media";
+  text?: string;
+  media?: PortfolioMedia;
+}
+
 export interface PortfolioSection {
   heading: string;
-  body: string;
-  media: PortfolioMedia[];
+  blocks: PortfolioContentBlock[];
 }
 
 export interface PortfolioCaseStudy {
@@ -34,18 +39,44 @@ function getMediaType(src: string): "image" | "video" {
 function parseSections(content: string): PortfolioSection[] {
   // Split on "---" separator lines (horizontal rules between sections)
   const rawSections = content.split(/\n---\n/).map((s) => s.trim()).filter(Boolean);
+  const sections: PortfolioSection[] = [];
 
-  return rawSections.map((raw) => {
+  for (const raw of rawSections) {
     const lines = raw.split("\n");
     let heading = "";
-    const bodyLines: string[] = [];
-    const media: PortfolioMedia[] = [];
+    let blocks: PortfolioContentBlock[] = [];
+    let currentTextLines: string[] = [];
+    let hasContent = false;
+
+    function flushText() {
+      const text = currentTextLines.join("\n").trim();
+      if (text) {
+        blocks.push({ kind: "text", text });
+        hasContent = true;
+      }
+      currentTextLines = [];
+    }
+
+    function flushSection() {
+      flushText();
+      if (heading || hasContent || blocks.length > 0) {
+        sections.push({ heading, blocks });
+      }
+      heading = "";
+      blocks = [];
+      hasContent = false;
+    }
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
 
-      // Section heading
+      // Section heading — starts a new section if there's already content
       if (line.startsWith("## ")) {
+        if (hasContent || blocks.length > 0) {
+          flushSection();
+        } else {
+          flushText();
+        }
         heading = line.replace(/^## /, "");
         continue;
       }
@@ -53,39 +84,41 @@ function parseSections(content: string): PortfolioSection[] {
       // Markdown image: ![alt](src)
       const imgMatch = line.match(/^!\[.*?\]\((.+?)\)$/);
       if (imgMatch) {
-        // Check if next line is an italic caption: *caption*
-        let caption: string | undefined;
-        const nextLine = lines[i + 1]?.trim();
-        if (nextLine && /^\*(.+)\*$/.test(nextLine)) {
-          caption = nextLine.replace(/^\*(.+)\*$/, "$1");
-          i++; // skip the caption line
-        }
-        media.push({ src: imgMatch[1], type: getMediaType(imgMatch[1]), caption });
-        continue;
-      }
-
-      // HTML video: <video src="..."></video>
-      const videoMatch = line.match(/<video\s+src="(.+?)".*?>/);
-      if (videoMatch) {
+        flushText();
         let caption: string | undefined;
         const nextLine = lines[i + 1]?.trim();
         if (nextLine && /^\*(.+)\*$/.test(nextLine)) {
           caption = nextLine.replace(/^\*(.+)\*$/, "$1");
           i++;
         }
-        media.push({ src: videoMatch[1], type: "video", caption });
+        blocks.push({ kind: "media", media: { src: imgMatch[1], type: getMediaType(imgMatch[1]), caption } });
+        hasContent = true;
         continue;
       }
 
-      bodyLines.push(line);
+      // HTML video: <video src="..."></video>
+      const videoMatch = line.match(/<video\s+src="(.+?)".*?>/);
+      if (videoMatch) {
+        flushText();
+        let caption: string | undefined;
+        const nextLine = lines[i + 1]?.trim();
+        if (nextLine && /^\*(.+)\*$/.test(nextLine)) {
+          caption = nextLine.replace(/^\*(.+)\*$/, "$1");
+          i++;
+        }
+        blocks.push({ kind: "media", media: { src: videoMatch[1], type: "video", caption } });
+        hasContent = true;
+        continue;
+      }
+
+      currentTextLines.push(line);
+      if (line.trim() !== "") hasContent = true;
     }
 
-    return {
-      heading,
-      body: bodyLines.join("\n").trim(),
-      media,
-    };
-  });
+    flushSection();
+  }
+
+  return sections;
 }
 
 export function getPortfolioCaseStudies(): PortfolioCaseStudy[] {
