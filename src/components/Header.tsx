@@ -15,7 +15,7 @@ export default function Header({ variant }: { variant?: "portfolio" }) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Resume <span className="resume-arrow">&rarr;</span>
+            📄 Resume <span className="resume-arrow">&rarr;</span>
           </a>
         </div>
       </section>
