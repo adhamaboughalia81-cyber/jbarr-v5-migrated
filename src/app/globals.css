@@ -105,6 +105,7 @@ table {
   --case-study-bg: #ffffff;
   --case-study-media-bg: #c9f3fe;
   --case-study-shadow: rgba(0, 0, 0, 0.3);
+  --portfolio-media-border: var(--color-text-muted);
 }
 
 :root.dark {
@@ -130,6 +131,7 @@ table {
   --case-study-bg: var(--color-bg);
   --case-study-media-bg: var(--white);
   --case-study-shadow:var(--pink);
+  --portfolio-media-border: var(--color-bg);
 }
 
 body {
@@ -684,7 +686,6 @@ sup a {
   min-width: 260px;
   height: 100vh;
   overflow-y: auto;
-  border-right: var(--border-x-small) solid var(--color-text-muted);
   padding: var(--margin-small);
   box-sizing: border-box;
   align-self: flex-start;
@@ -818,7 +819,7 @@ sup a {
   height: auto;
   display: block;
   margin-bottom: 0;
-  border: var(--border-x-small) solid var(--color-text-muted);
+  border: var(--border-x-small) solid var(--portfolio-media-border);
 }
 
 .portfolio-section--video {
@@ -841,22 +842,6 @@ sup a {
   line-height: 1.4;
 }
 
-/* Grid layout for sections with many images (e.g., breakdown details) */
-.portfolio-section--media-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-  margin-top: var(--margin-small);
-}
-
-.portfolio-section--media-grid .portfolio-section--figure {
-  margin-bottom: 0;
-}
-
-.portfolio-section--media-grid .portfolio-section--image {
-  height: 100%;
-  object-fit: cover;
-}
 
 /* Portfolio responsive */
 @media (max-width: 767px) {
@@ -868,7 +853,6 @@ sup a {
     position: static;
     width: 100%;
     height: auto;
-    border-right: none;
     border-bottom: var(--border-x-small) solid var(--color-text-muted);
     padding: 16px 20px;
   }
