@@ -36,7 +36,7 @@ Key design decisions explored:
 - Status signals at a glance (CI, review state, draft)
 - Enterprise and team use cases
 
-I prototyped the experience directly in our codebase to give engineers, as well as created Figma explorations below:
+I prototyped the experience directly in our codebase and created Figma explorations:
 
 ![Figma exploration: assigned view](/images/portfolio/pulls-inbox/assigned.png)
 
