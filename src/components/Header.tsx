@@ -1,8 +1,8 @@
 import ThemeToggle from "./ThemeToggle";
 
-export default function Header() {
+export default function Header({ variant }: { variant?: "portfolio" }) {
   return (
-    <header>
+    <header className={variant === "portfolio" ? "portfolio" : undefined}>
       <section className="navigation">
         <h1>
           Product + Design <span>by Justin Barr Young</span>

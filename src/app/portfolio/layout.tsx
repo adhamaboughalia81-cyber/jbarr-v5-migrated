@@ -41,7 +41,7 @@ export default function PortfolioLayout({
         />
       </head>
       <body>
-        <Header />
+        <Header variant="portfolio" />
         <div className="portfolio-layout">
           <aside className="portfolio-sidebar">
             <PortfolioNav items={navItems} />
