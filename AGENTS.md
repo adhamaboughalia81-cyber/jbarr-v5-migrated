@@ -84,6 +84,48 @@ Key flags: `-crf 28` (quality, lower = bigger), `-scale=1200:-2` (2× retina for
 
 After re-encoding, the frontmatter paths already point to the correct locations — no code changes needed.
 
+## Portfolio section
+
+A standalone `/portfolio` route — not linked from the main site, not publicly discoverable. It's a separate presentation layer for detailed case studies, intended for sharing directly with specific people (recruiters, hiring managers, etc).
+
+**Structure:**
+- `src/app/portfolio/` — Next.js route group with its own layout (left sidebar nav + scrollable content)
+- `src/app/portfolio/[slug]/page.tsx` — Dynamic route rendering each case study
+- `content/portfolio/*.md` — Case study content (markdown with frontmatter)
+- `public/images/portfolio/<slug>/` — Assets per case study
+- `src/lib/portfolio.ts` — Parses markdown into structured sections
+- `src/components/PortfolioNav.tsx` — Left-hand nav (client component, uses pathname for active state)
+- `src/components/PortfolioSection.tsx` — Renders a section (heading, body, media with captions)
+
+**Content format:**
+Each portfolio markdown file has YAML frontmatter (`title`, `slug`, `employer`, `order`) and body content split by `---` into sections. Sections have `## Heading`, body text (rendered as simple HTML), and media:
+
+```markdown
+## Section heading
+
+Body text with **bold** and lists.
+
+![alt text](/images/portfolio/slug/image.png)
+*Optional caption in italics directly under the image*
+
+<video src="/images/portfolio/slug/video.mp4"></video>
+*Optional video caption*
+```
+
+**Current case studies:**
+1. `pulls-inbox` — GitHub global pull requests dashboard (full, 8 sections)
+2. `global-navigation` — GitHub global navigation redesign (full, 4 sections)
+3. `sigsci-attack-timeline` — Signal Sciences attack timeline visualization (full, 5 sections)
+4. `sigsci-dashboard` — Signal Sciences dashboard redesign (full, 3 sections)
+5. `sigsci-navigation` — Signal Sciences navigation scaling (full, 5 sections)
+
+**Key details:**
+- Uses the same global CSS, theme tokens, fonts, and dark mode as the main site
+- `robots: noindex` meta tag to prevent search indexing
+- No links from the main site to `/portfolio`
+- Responsive: sidebar collapses to horizontal nav on mobile (767px breakpoint)
+- Sections with media render images/videos stacked vertically at full width
+
 ## Key conventions
 
 - All color values used by elements should reference `--color-*` or `--cta-*` semantic variables, never raw hex values. Raw palette tokens (`--blue`, `--orange`, etc.) are only used inside variable definitions.

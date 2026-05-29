@@ -671,4 +671,226 @@ sup a {
   }
 }
 
+/* Portfolio layout */
+.portfolio-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.portfolio-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  overflow-y: auto;
+  border-right: var(--border-x-small) solid var(--color-text-muted);
+  padding: var(--margin-small);
+  box-sizing: border-box;
+}
+
+.portfolio-content {
+  margin-left: 260px;
+  flex: 1;
+  padding: var(--margin-medium);
+  max-width: 900px;
+}
+
+/* Portfolio nav */
+.portfolio-nav--header {
+  margin-bottom: var(--margin-small);
+}
+
+.portfolio-nav--title {
+  font-family: "Lato";
+  font-weight: 900;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.portfolio-nav--list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.portfolio-nav--list li {
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-nav--link {
+  font-family: "Lato";
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: none;
+  display: block;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.portfolio-nav--link:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+  color: var(--color-primary);
+}
+
+.portfolio-nav--link-active {
+  color: var(--color-primary);
+  background-color: rgba(128, 128, 128, 0.08);
+}
+
+/* Portfolio case study */
+.portfolio-case-study--header {
+  margin-bottom: var(--margin-medium);
+}
+
+.portfolio-case-study--title {
+  font-family: "Lato";
+  font-weight: 900;
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-case-study--employer {
+  font-family: "Lato";
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+/* Portfolio sections */
+.portfolio-section {
+  margin-bottom: var(--margin-big);
+}
+
+.portfolio-section--heading {
+  font-family: "Lato";
+  font-weight: 900;
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
+  display: block;
+  line-height: 1.3;
+}
+
+.portfolio-section--body p {
+  font-family: "Noto Serif";
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.portfolio-section--body ul,
+.portfolio-section--body ol {
+  padding-left: 1.25em;
+  margin-bottom: 1rem;
+}
+
+.portfolio-section--body ul {
+  list-style: disc;
+}
+
+.portfolio-section--body ol {
+  list-style: decimal;
+}
+
+.portfolio-section--body li {
+  font-family: "Noto Serif";
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 0.35rem;
+}
+
+.portfolio-section--body strong {
+  font-weight: 700;
+}
+
+.portfolio-section--media {
+  margin-top: var(--margin-small);
+}
+
+.portfolio-section--image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 0;
+  border: var(--border-x-small) solid var(--color-text-muted);
+}
+
+.portfolio-section--video {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 0;
+  border: var(--border-x-small) solid var(--color-text-muted);
+}
+
+.portfolio-section--figure {
+  margin-bottom: var(--margin-small);
+}
+
+.portfolio-section--caption {
+  font-family: "Lato";
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+/* Grid layout for sections with many images (e.g., breakdown details) */
+.portfolio-section--media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: var(--margin-small);
+}
+
+.portfolio-section--media-grid .portfolio-section--figure {
+  margin-bottom: 0;
+}
+
+.portfolio-section--media-grid .portfolio-section--image {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Portfolio responsive */
+@media (max-width: 767px) {
+  .portfolio-layout {
+    flex-direction: column;
+  }
+
+  .portfolio-sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: var(--border-x-small) solid var(--color-text-muted);
+    padding: 16px 20px;
+  }
+
+  .portfolio-content {
+    margin-left: 0;
+    padding: var(--margin-small);
+  }
+
+  .portfolio-nav--list {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .portfolio-nav--list li {
+    margin-bottom: 0;
+  }
+
+  .portfolio-case-study--title {
+    font-size: 1.5rem;
+  }
+}
+
 } /* end @layer base */
