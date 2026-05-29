@@ -674,23 +674,23 @@ sup a {
 /* Portfolio layout */
 .portfolio-layout {
   display: flex;
-  min-height: 100vh;
+  min-height: calc(100vh - 61px);
 }
 
 .portfolio-sidebar {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
   width: 260px;
+  min-width: 260px;
   height: 100vh;
   overflow-y: auto;
   border-right: var(--border-x-small) solid var(--color-text-muted);
   padding: var(--margin-small);
   box-sizing: border-box;
+  align-self: flex-start;
 }
 
 .portfolio-content {
-  margin-left: 260px;
   flex: 1;
   padding: var(--margin-medium);
   max-width: 900px;

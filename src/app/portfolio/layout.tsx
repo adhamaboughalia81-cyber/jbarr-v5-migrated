@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getPortfolioCaseStudies } from "@/lib/portfolio";
 import PortfolioNav from "@/components/PortfolioNav";
+import Header from "@/components/Header";
 import "../globals.css";
 import { assetPath } from "@/lib/assetPath";
 
@@ -40,6 +41,7 @@ export default function PortfolioLayout({
         />
       </head>
       <body>
+        <Header />
         <div className="portfolio-layout">
           <aside className="portfolio-sidebar">
             <PortfolioNav items={navItems} />
