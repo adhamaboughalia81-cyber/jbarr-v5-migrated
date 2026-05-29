@@ -36,7 +36,7 @@ As the GitHub platform grew to support over 150 million developers, including en
 
 ## Expose the information architecture
 
-The underlying IA needed to be made explicit. GitHub's hierarchy is deep: Enterprise -> Organization -> Repos, and each layer has its own set of features.
+The underlying IA needed to be made explicit. GitHub's hierarchy is deep: Enterprise → Organization → Repos, and each layer has its own set of features.
 
 ![GitHub's information architecture](/images/portfolio/global-navigation/IA.png)
 *See that arrow above? Navigating between these two points in the product took at least five clicks*
