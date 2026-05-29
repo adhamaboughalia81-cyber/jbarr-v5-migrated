@@ -42,7 +42,7 @@ The redesign centered on making the dashboard composable — customers could con
 
 ## Results: Flexible dashboards adapted to enterprise scale
 
-The flexible dashboard was a direct enabler of Signal Sciences' enterprise go-to-market. It removed a key friction point in the sales cycle — large prospects could now see a path to configuring the product around their environment rather than working around a fixed view.
+The customizable dashboard system was a direct enabler of Signal Sciences' enterprise go-to-market. It removed a key friction point in the sales cycle — large prospects could now see a path to configuring the product around their environment rather than working around a fixed view.
 
 - Platform scaled to monitoring 40,000 apps processing 2 trillion requests/month
 - Improved sales conversion — enterprise deals no longer blocked on customization gaps
